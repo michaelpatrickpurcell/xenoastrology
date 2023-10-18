@@ -1,0 +1,113 @@
+\definecolor{Crimson}{HTML}{DC143C}
+\definecolor{Green}{HTML}{00A550}
+\definecolor{RichLavender}{HTML}{A76BCF}
+\definecolor{RoyalBlue}{HTML}{4169E1}
+\definecolor{Copper}{HTML}{7B3F00}
+\definecolor{OffBlack}{HTML}{100e0c}
+
+\tikzset{pics/icon/.style n args={2}{code={
+\node[inner sep=2mm, draw, line width=0.75mm, fill=white, fill opacity=1.0, rounded corners=2mm, minimum width=1.5cm] {\tikz{
+\node[inner sep=0pt] (pc) {\includegraphics[scale=0.125]{Icons/#1}};
+\path (pc.south) --++ (0, -0.05cm) node[inner sep=0pt] {\textcolor{black}{\tiny #2}};
+}};
+}}}
+
+\tikzset{onestar/.pic={
+\node[draw=OffBlack, circle, inner sep=1.875pt, line width=0.9mm] at (0,0)  {\normalsize\phantom{1}};
+}}
+
+\tikzset{twostar/.pic={
+\node[text=OffBlack, rotate=45, inner sep=0pt] at (0,0) {\rule{7mm}{1mm}};
+\node[text=OffBlack, rotate=-45, inner sep=0pt] at (0,0) {\rule{7mm}{1mm}};
+}}
+
+\tikzset{threestar/.pic={
+\node[regular polygon, regular polygon sides=3, fill=OffBlack, inner sep=0pt] at (0,0) {\normalsize\phantom{1}};
+}}
+
+\tikzset{fourstar/.pic={
+\node[draw=OffBlack, diamond, inner sep=0.8pt, line width=0.9mm] at (0,0) {\normalsize\phantom{1}};
+}}
+
+\tikzset{fivestar/.pic={
+\node[star, star points=5, star point ratio=2, fill=OffBlack, inner sep=0.3pt] at (0,0) {\normalsize\phantom{1}};
+}}
+
+\tikzset{sixstar/.pic={
+\node[regular polygon, regular polygon sides=6, fill=OffBlack, inner sep=2.2pt] at (0,0) {\normalsize\phantom{1}};
+}}
+
+
+\tikzset{die1/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] {};
+	}
+}
+
+\tikzset{die2/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  -0.245em) {};
+	}
+}
+
+\tikzset{die3/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  -0.245em) {};
+	}
+}
+
+\tikzset{die4/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, -0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  -0.245em) {};
+	}
+}
+
+\tikzset{die5/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  -0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, -0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  0.245em) {};
+	}
+}
+
+\tikzset{die6/.pic={
+	\huge
+    	\node[draw, OffBlack, line width=0.065em, minimum size=1em, rounded corners=1mm] {};
+    \node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  -0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, -0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  0.245em) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (-0.245em,  0) {};
+    	\node[draw, fill=OffBlack, circle, inner sep=0.07em] at (0.245em, 0) {};
+	}
+}
+
+\newcommand{\dieone}{\tikz[baseline=-0.35em]{\pic {die1};}}
+\newcommand{\dietwo}{\tikz[baseline=-0.35em]{\pic {die2};}}
+\newcommand{\diethree}{\tikz[baseline=-0.35em]{\pic {die3};}}
+\newcommand{\diefour}{\tikz[baseline=-0.35em]{\pic {die4};}}
+\newcommand{\diefive}{\tikz[baseline=-0.35em]{\pic {die5};}}
+\newcommand{\diesix}{\tikz[baseline=-0.35em]{\pic {die6};}}
+
+
+
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\AtBeginDocument{\globalcolor{OffBlack}}

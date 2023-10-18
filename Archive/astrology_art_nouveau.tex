@@ -1,0 +1,99 @@
+\documentclass[a4paper, parskip=half]{scrartcl}
+\usepackage[margin=10mm]{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\usepackage{fontspec}
+
+\usepackage{contour}
+\usepackage{multicol}
+\setlength\columnsep{10mm}
+
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\usepackage{lipsum}
+
+\setkomafont{section}{\setmainfont{Boecklins Universe}\LARGE\center}%{\setmainfont{Limelight}\LARGE\center}%{\setmainfont{Half Full NF}\LARGE\center}%{\setmainfont{Orbitron-Black}\LARGE\center}
+
+% Adjust spacing before and after section headings
+\RedeclareSectionCommand[
+  runin=false,
+  beforeskip=1.0\baselineskip,
+  afterskip=-0.0\baselineskip
+]{section}
+
+\definecolor{Crimson}{HTML}{DC143C}
+\definecolor{Green}{HTML}{00A550}
+\definecolor{RichLavender}{HTML}{A76BCF}
+\definecolor{RoyalBlue}{HTML}{4169E1}
+\definecolor{Copper}{HTML}{7B3F00}
+
+\tikzset{pics/icon/.style n args={2}{code={
+\node[inner sep=2mm, draw, line width=0.75mm, fill=white, fill opacity=1.0, rounded corners=2mm, minimum width=1.5cm] {\tikz{
+\node[inner sep=0pt] (pc) {\includegraphics[scale=0.125]{Icons/#1}};
+\path (pc.south) --++ (0, -0.05cm) node[inner sep=0pt] {\textcolor{black}{\tiny #2}};
+}};
+}}}
+
+\begin{document}
+{
+\setmainfont[Scale=2.4]{Boecklins Universe}%{Limelight}%{Half Full NF}%{Orbitron-Black}
+\Huge
+\begin{center}
+%Xenoastrology
+\raisebox{-0.2ex}{\tikz{\pic {icon={player_count_icon_black.png}{1-99}};}} \hfill Ast\textcolor{black}{roll}ogy \hfill \raisebox{-0.2ex}{\tikz{\pic {icon={play_time_icon_black.png}{10-15}};}}% \raisebox{-0.3ex}{\includegraphics[height=1.6ex]{Icons/play_time_icon_red.png}}
+\end{center}
+}
+
+\vspace{-10.5mm}
+
+{
+\setmainfont{Ubuntu}%{Glass Antiqua}%{Half Full NF}%{TeX Gyre Schola}
+\begin{center}
+\input{starfield_diagram.tex}
+\end{center}
+}
+
+\vspace{-10mm}
+
+\setmainfont{TeX Gyre Schola}%[Scale=1.2]{Glass Antiqua}
+\raggedright
+\begin{multicols}{2}
+\section*{Gameplay}
+Give everyone a pencil and a copy of these rules. Find two standard six-sided dice to share.
+
+Play proceeds over a series of rounds. Each round, roll the dice. Then each player should either:
+\begin{itemize}[leftmargin=*]
+%	\vspace{-1ex}
+	\item Choose a new \emph{current star} that matches a die result and is not in a constellation.	
+	\item Draw a straight line from their current star to a star that matches a die result and is not in a constellation. Then, update their current star.
+\end{itemize}
+
+\textbf{Notes:} A \emph{constellation} is a group of stars that are connected by lines. Each constellation may have at most one star of each number. Lines may not cross other lines or pass through intervening stars.\vfill\null\columnbreak
+
+%Every set of stars that are connected by lines forms a \emph{constellation}. Each constellation may contain at most one star of each number.\vfill\null\columnbreak
+
+\section*{Scoring}
+Each round, any players who cannot take an action will receive a \emph{strike} ({\setmainfont{Ubuntu} X}). The game ends when any player receives their third strike.
+
+Players are then awarded points based on the number of stars in each of their constellations according to the following table:
+
+\begin{center}
+\begin{tabular}{l rrrrr} \toprule
+Stars & 2 & 3 & 4 & 5 & 6 \\
+Points & \phantom{1}1 & \phantom{1}3 &\phantom{1}6 & 10 & 15 \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1.0ex}
+
+The player with the highest total score wins.
+
+\vspace{1ex}
+
+\textbf{Design:} Michael Purcell\\
+\textbf{Random Seed:} 1209966854\vfill\null
+\end{multicols}
+\end{document}
