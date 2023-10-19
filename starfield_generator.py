@@ -54,7 +54,7 @@ def generate_starfield_tikzpicture(points):
     pic = tikz.Picture()
     pic.usetikzlibrary('shapes.geometric')
 
-    pic.node(r'\phantom{1}', at=(0,0), circle=True, minimum_width='160mm')
+    pic.node(r'\phantom{1}', at=(0,0), circle=True, minimum_width='160mm')#, draw=True)
 
 
     for point in points[:6]:
@@ -88,12 +88,10 @@ def generate_starfield_tikzpicture(points):
         for point in points[6*i:6*(i+1)]:
             pic.node('', at=tuple(point/6), draw='white', circle=True, fill='lightgray', inner_sep='1.5pt')
 
-    # pic.node(r'\setmainfont[Scale=1.6]{Ubuntu}\Huge X', at=(8.25, -8.25), text='lightgray!50')
-    # pic.node('', at=(8.25, -8.25), draw='black', ultra_thick=True, minimum_size='10mm', rounded_corners='2mm')
-    # pic.node(r'\setmainfont[Scale=1.6]{Ubuntu}\Huge X', at=(8.25, -7.0), text='lightgray!50')
-    # pic.node('', at=(8.25, -7.0), draw='black', ultra_thick=True, minimum_size='10mm', rounded_corners='2mm')
-    # pic.node(r'\setmainfont[Scale=1.6]{Ubuntu}\Huge X', at=(8.25, -5.75), text='lightgray!50')
-    # pic.node('', at=(8.25, -5.75), draw='black', ultra_thick=True, minimum_size='10mm', rounded_corners='2mm')
+    pic.node(r'\drawoneeighthmoon', at ="(-82.5mm,67mm)")
+    pic.node(r'\drawthreeeighthmoon', at ="(82.5mm,67mm)")
+    pic.node(r'\drawfiveeighthmoon', at ="(82.5mm,-67mm)")
+    pic.node(r'\drawseveneighthmoon', at ="(-82.5mm,-67mm)")
 
     tikzpicture = pic.code()
 
@@ -136,7 +134,7 @@ def generate_latex_doc(tikzpicture, seed):
 
     doc.append(NoEscape(r'\begin{center}\includegraphics[width=155mm]{Images/ASTROLLOGY_Logo.eps}\end{center}'))
 
-    doc.append(Command(r'vspace{-1mm}'))
+    doc.append(Command(r'vspace{-1.5mm}'))
     doc.append(Command(NoEscape(r'setmainfont[Scale=0.95]{Century Gothic}')))
     doc.append(Command(NoEscape(r'raggedright')))
 
@@ -149,7 +147,7 @@ def generate_latex_doc(tikzpicture, seed):
     doc.append(NoEscape(r"\textbf{Random Seed:} %i\\\textbf{Design:} Michael~Purcell, Kyle~``KYNG''~Jarratt\vfill\null" % seed))
     doc.append(Command(r'end{multicols}'))
 
-    doc.append(Command(r'vspace{-7.5mm}'))
+    doc.append(Command(r'vspace{-5mm}'))
 
     doc.append(NoEscape(r'{\Huge \dieone{} = \tikz{\pic {onestar}} \hfill \dietwo{} = \tikz{\pic {twostar}} \hfill \diethree{} = \tikz{\pic {threestar}} \hfill \diefour{} = \tikz{\pic {fourstar}} \hfill \diefive{} = \tikz{\pic {fivestar}} \hfill \diesix{} = \tikz{\pic {sixstar}}}'))
 
@@ -161,7 +159,8 @@ def save_latex_doc(latex_doc, seed):
 if __name__ == '__main__':
     # seed = 1839123614
     # seed = 643267061
-    seed = None
+    seed = 2051969986
+    # seed = None
     points, seed = generate_starfield_points(seed=seed)
     print(seed)
     tikzpicture = generate_starfield_tikzpicture(points=points)

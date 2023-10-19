@@ -107,8 +107,49 @@
 \tikzset{dieface/.pic={
 	\node[draw, minimum width=10mm, inner sep=0pt, minimum height=10mm] at (0,0) {};
 	\pic[scale=1.0, transform shape] at (0,0) {#1};
-}
-}
+}}
+
+\tikzset{oneeighthmoon/.pic={
+\begin{scope}
+\clip (0,0) circle (10mm);
+\node[fill=OffBlack, circle, minimum width=20mm] at (0, 0) {};
+\node[fill=white, circle, minimum width=20mm] at (-10mm, 0) {};
+\end{scope}
+\node[draw=OffBlack, circle, minimum width=20mm, line width=0.5mm] at (0,0) {};
+}}
+
+\tikzset{threeeighthmoon/.pic={
+\begin{scope}
+\clip (0,0) circle (10mm);
+\node[fill=white, circle, minimum width=20mm] at (0, 0) {};
+\node[fill=OffBlack, circle, minimum width=20mm] at (10mm, 0) {};
+\end{scope}
+\node[draw=OffBlack, circle, minimum width=20mm, line width=0.5mm] at (0,0) {};
+}}
+
+\tikzset{fiveeighthmoon/.pic={
+\begin{scope}
+\clip (0,0) circle (10mm);
+\node[fill=white, circle, minimum width=20mm] at (0, 0) {};
+\node[fill=OffBlack, circle, minimum width=20mm] at (-10mm, 0) {};
+\end{scope}
+\node[draw=OffBlack, circle, minimum width=20mm, line width=0.5mm] at (0,0) {};
+}}
+
+\tikzset{seveneighthmoon/.pic={
+\begin{scope}
+\clip (0,0) circle (10mm);
+\node[fill=OffBlack, circle, minimum width=20mm] at (0, 0) {};
+\node[fill=white, circle, minimum width=20mm] at (10mm, 0) {};
+\end{scope}
+\node[draw=OffBlack, circle, minimum width=20mm, line width=0.5mm] at (0,0) {};
+}}
+
+\newcommand{\drawoneeighthmoon}{\tikz{\pic {oneeighthmoon};}}
+\newcommand{\drawthreeeighthmoon}{\tikz{\pic {threeeighthmoon};}}
+\newcommand{\drawfiveeighthmoon}{\tikz{\pic {fiveeighthmoon};}}
+\newcommand{\drawseveneighthmoon}{\tikz{\pic {seveneighthmoon};}}
+
 
 \makeatletter
 \newcommand{\globalcolor}[1]{%
