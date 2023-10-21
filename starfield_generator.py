@@ -88,10 +88,10 @@ def generate_starfield_tikzpicture(points):
         for point in points[6*i:6*(i+1)]:
             pic.node('', at=tuple(point/6), draw='white', circle=True, fill='lightgray', inner_sep='1.5pt')
 
-    pic.node(r'\drawoneeighthmoon', at ="(-82.5mm,67mm)")
-    pic.node(r'\drawthreeeighthmoon', at ="(82.5mm,67mm)")
-    pic.node(r'\drawfiveeighthmoon', at ="(82.5mm,-67mm)")
-    pic.node(r'\drawseveneighthmoon', at ="(-82.5mm,-67mm)")
+    # pic.node(r'\drawoneeighthmoon', at ="(-82.5mm,67mm)")
+    # pic.node(r'\drawthreeeighthmoon', at ="(82.5mm,67mm)")
+    # pic.node(r'\drawfiveeighthmoon', at ="(82.5mm,-67mm)")
+    # pic.node(r'\drawseveneighthmoon', at ="(-82.5mm,-67mm)")
 
     tikzpicture = pic.code()
 
@@ -144,7 +144,7 @@ def generate_latex_doc(tikzpicture, seed):
     f.close()
     doc.append(NoEscape(rules_text))
     doc.append(Command(r'vfill'))
-    doc.append(NoEscape(r"\textbf{Random Seed:} %i\\\textbf{Design:} Michael~Purcell, Kyle~``KYNG''~Jarratt\vfill\null" % seed))
+    doc.append(NoEscape(r"\textbf{Random Seed:} %i\\\textbf{Game Design:} Michael~Purcell\\\textbf{Graphic Design:} Kyle~``KYNG''~Jarratt\\\textbf{Contact:} ttkttkt@gmail.com\vfill\null" % seed))
     doc.append(Command(r'end{multicols}'))
 
     doc.append(Command(r'vspace{-5mm}'))
