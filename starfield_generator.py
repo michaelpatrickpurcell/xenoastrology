@@ -94,11 +94,10 @@ def generate_starfield_tikzpicture(points):
     # pic.node(r'\drawseveneighthmoon', at ="(-82.5mm,-67mm)")
 
     tikzpicture = pic.code()
-
     return tikzpicture
 
 def save_starfield_tikzpicture(tikzpicture, filename):
-    f = open('filename', 'w')
+    f = open(filename, 'w')
     f.write(tikzpicture)
     f.close()
 
@@ -159,11 +158,11 @@ def save_latex_doc(latex_doc, seed):
 if __name__ == '__main__':
     # seed = 1839123614
     # seed = 643267061
-    seed = 2051969986
-    # seed = None
+    # seed = 2051969986
+    seed = None
     points, seed = generate_starfield_points(seed=seed)
     print(seed)
     tikzpicture = generate_starfield_tikzpicture(points=points)
-    # save_starfield_tikzpicture(tikzpicture=tikzpicture, filename='starfield_diagram_minimal.pdf')
+    # save_starfield_tikzpicture(tikzpicture=tikzpicture, filename='starfield_background.tex')
     latex_doc = generate_latex_doc(tikzpicture, seed)
     save_latex_doc(latex_doc, seed)
